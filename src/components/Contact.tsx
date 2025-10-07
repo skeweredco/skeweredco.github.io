@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from 'react';
-import './components.css';
+import '../styles/components.css';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -64,29 +64,29 @@ const Contact = () => {
   const generateCalendarDays = () => {
     const year = currentMonth.getFullYear();
     const month = currentMonth.getMonth();
-    
+
     // Get the first day of the month
     const firstDay = new Date(year, month, 1).getDay();
-    
+
     // Get the number of days in the month
     const daysInMonth = new Date(year, month + 1, 0).getDate();
-    
+
     const days = [];
-    
+
     // Add empty cells for days before the first day of the month
     for (let i = 0; i < firstDay; i++) {
       days.push(<div key={`empty-${i}`} className="calendar-day empty"></div>);
     }
-    
+
     // Add days of the month
     for (let day = 1; day <= daysInMonth; day++) {
       const date = new Date(year, month, day);
-      const event = events.find(e => 
-        e.date.getDate() === date.getDate() && 
-        e.date.getMonth() === date.getMonth() && 
+      const event = events.find(e =>
+        e.date.getDate() === date.getDate() &&
+        e.date.getMonth() === date.getMonth() &&
         e.date.getFullYear() === date.getFullYear()
       );
-      
+
       days.push(
         <div key={day} className={`calendar-day ${event ? 'has-event' : ''}`}>
           <span className="day-number">{day}</span>
@@ -94,7 +94,7 @@ const Contact = () => {
         </div>
       );
     }
-    
+
     return days;
   };
 
@@ -102,7 +102,7 @@ const Contact = () => {
     <section id="contact" className="contact-section">
       <div className="container">
         <h2 className="section-title">Contact Us</h2>
-        
+
         <div className="contact-content">
           <div ref={calendarRef} className="calendar-container">
             <h3>Upcoming Events</h3>
@@ -114,7 +114,7 @@ const Contact = () => {
                 </h4>
                 <button onClick={nextMonth}>&gt;</button>
               </div>
-              
+
               <div className="weekdays">
                 <div>Sun</div>
                 <div>Mon</div>
@@ -124,11 +124,11 @@ const Contact = () => {
                 <div>Fri</div>
                 <div>Sat</div>
               </div>
-              
+
               <div className="calendar-days">
                 {generateCalendarDays()}
               </div>
-              
+
               <div className="events-legend">
                 <div className="event-item">
                   <span className="event-dot"></span>
@@ -137,7 +137,7 @@ const Contact = () => {
               </div>
             </div>
           </div>
-          
+
           <div ref={formRef} className="contact-form-container">
             <h3>Get in Touch</h3>
             <form onSubmit={handleSubmit} className="contact-form">
@@ -152,7 +152,7 @@ const Contact = () => {
                   required
                 />
               </div>
-              
+
               <div className="form-group">
                 <label htmlFor="email">Email</label>
                 <input
@@ -164,7 +164,7 @@ const Contact = () => {
                   required
                 />
               </div>
-              
+
               <div className="form-group">
                 <label htmlFor="message">Message</label>
                 <textarea
@@ -175,7 +175,7 @@ const Contact = () => {
                   required
                 ></textarea>
               </div>
-              
+
               <button type="submit" className="submit-button">Send Message</button>
             </form>
           </div>

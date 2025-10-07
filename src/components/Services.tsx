@@ -1,5 +1,5 @@
 import { useEffect, useRef } from 'react';
-import './components.css';
+import '../styles/Services.css';
 
 interface ServiceCardProps {
   title: string;

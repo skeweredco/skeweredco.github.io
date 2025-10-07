@@ -1,5 +1,5 @@
 import { useEffect, useRef } from 'react';
-import './components.css';
+import '../styles/About.css';
 
 const About = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -40,21 +40,21 @@ const About = () => {
           </div>
           <div className="about-text">
             <p>
-              Skewered Co has been a staple in the Japanese street food scene for 10 years, 
-              specializing in events at local farmers markets and private catering. Our unique 
-              selling point is our dedication to bringing the authentic taste of Japan to Arizona, 
+              Skewered Co has been a staple in the Japanese street food scene for 10 years,
+              specializing in events at local farmers markets and private catering. Our unique
+              selling point is our dedication to bringing the authentic taste of Japan to Arizona,
               one skewer at a time.
             </p>
             <p>
-              Skewered Co has built a reputation for excellence over the past decade, becoming 
-              synonymous with quality and authenticity in Japanese street food. Our team's passion 
-              for culinary craftsmanship shines through in every dish we serve, creating memorable 
+              Skewered Co has built a reputation for excellence over the past decade, becoming
+              synonymous with quality and authenticity in Japanese street food. Our team's passion
+              for culinary craftsmanship shines through in every dish we serve, creating memorable
               experiences for our customers.
             </p>
             <p>
-              We take pride in sourcing the finest ingredients and staying true to traditional recipes, 
-              ensuring that each bite transports you to the bustling streets of Japan. With a commitment 
-              to flavor and a flair for innovation, Skewered Co continues to delight taste buds and 
+              We take pride in sourcing the finest ingredients and staying true to traditional recipes,
+              ensuring that each bite transports you to the bustling streets of Japan. With a commitment
+              to flavor and a flair for innovation, Skewered Co continues to delight taste buds and
               captivate food enthusiasts across Arizona.
             </p>
           </div>

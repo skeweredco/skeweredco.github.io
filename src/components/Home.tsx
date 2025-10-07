@@ -1,5 +1,5 @@
 import { useEffect, useRef } from 'react';
-import './Home.css';
+import '../styles/Home.css';
 
 const Home = () => {
   const titleRef = useRef<HTMLHeadingElement>(null);
@@ -10,13 +10,13 @@ const Home = () => {
     if (titleRef.current) {
       titleRef.current.classList.add('animate-in');
     }
-    
+
     setTimeout(() => {
       if (subtitleRef.current) {
         subtitleRef.current.classList.add('animate-in');
       }
     }, 300);
-    
+
     setTimeout(() => {
       if (buttonRef.current) {
         buttonRef.current.classList.add('animate-in');

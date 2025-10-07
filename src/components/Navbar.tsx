@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import './Navbar.css';
+import '../styles/Navbar.css';
 import logoImage from '../assets/images/skeweredco_logo.png';
 
 const Navbar = () => {
@@ -10,7 +10,7 @@ const Navbar = () => {
   useEffect(() => {
     const handleScroll = () => {
       const sections = ['home', 'about', 'services', 'contact'];
-      
+
       // Check which section is currently in view
       for (const section of sections) {
         const element = document.getElementById(section);
@@ -22,7 +22,7 @@ const Navbar = () => {
           }
         }
       }
-      
+
       // Add background to navbar when scrolled
       setScrolled(window.scrollY > 50);
     };
@@ -49,13 +49,13 @@ const Navbar = () => {
         <div className="logo">
           <img src={logoImage} alt="Skewered Co Logo" className="logo-image" />
         </div>
-        
+
         <div className={`hamburger ${menuOpen ? 'active' : ''}`} onClick={toggleMenu}>
           <span></span>
           <span></span>
           <span></span>
         </div>
-        
+
         <ul className={`nav-menu ${menuOpen ? 'active' : ''}`}>
           <li className={activeSection === 'home' ? 'active' : ''}>
             <button onClick={() => scrollToSection('home')}>Home</button>

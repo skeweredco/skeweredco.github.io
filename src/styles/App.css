@@ -2,7 +2,7 @@
   --primary-color: #e94f37;
   --secondary-color: #393e41;
   --accent-color: #f37748;
-  --background-color: #f6f7eb;
+  --background-color: #f9f9f9;
   --text-color: #333;
   --light-color: #fff;
   --transition: all 0.3s ease;
@@ -75,6 +75,7 @@ button {
     opacity: 0;
     transform: translateY(20px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -86,6 +87,7 @@ button {
     opacity: 0;
     transform: translateX(-30px);
   }
+
   to {
     opacity: 1;
     transform: translateX(0);
@@ -96,7 +98,7 @@ button {
   .section-title {
     font-size: 2rem;
   }
-  
+
   section {
     padding: 60px 0;
   }
