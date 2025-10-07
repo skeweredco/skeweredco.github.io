@@ -222,8 +222,7 @@
 }
 
 .footer-logo {
-  font-size: 1.8rem;
-  font-weight: bold;
+  font-size: 0.9rem;
   color: white;
 }
 
@@ -240,12 +239,6 @@
 
 .social-link:hover {
   color: var(--accent);
-}
-
-.footer-text {
-  text-align: center;
-  font-size: 0.9rem;
-  color: rgba(255, 255, 255, 0.8);
 }
 
 /* Responsive Styles */

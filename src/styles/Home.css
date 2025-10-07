@@ -11,7 +11,7 @@
 }
 
 .home-image-container {
-  flex: 1;
+  flex: 0 0 50%;
   background: url('/src/assets/images/yakitori.jpg');
   background-size: cover;
   background-position: center;
@@ -27,7 +27,7 @@
 }
 
 .home-content {
-  flex: 1;
+  flex: 0 0 50%;
   display: flex;
   flex-direction: column;
   justify-content: center;

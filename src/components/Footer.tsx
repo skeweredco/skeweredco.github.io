@@ -9,7 +9,7 @@ const Footer = () => {
         <div className="footer-content">
           <div className="footer-logo">
             <h3>Skewered Co</h3>
-            <p>Authentic Japanese Street Food</p>
+            <p>Japanese Street Food</p>
           </div>
 
           <div className="footer-social">
