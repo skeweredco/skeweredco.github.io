@@ -98,8 +98,8 @@ const Contact = () => {
 
   return (
     <section id="contact" className="contact-section">
-      <div className="contact-container">
-        <h2 className="contact-title">Contact Us</h2>
+      <div className="container">
+        <h2 className="section-title">Contact Us</h2>
         {/* <p className="contact-subtitle">Get in touch with us for your catering needs</p> */}
 
         <div className="contact-content">

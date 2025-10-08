@@ -3,21 +3,6 @@
     background-color: var(--light-color);
 }
 
-.contact-container {
-    display: flex;
-    flex-direction: column;
-    max-width: 1200px;
-    margin: 0 auto;
-    gap: 3rem;
-}
-
-.contact-title {
-    text-align: center;
-    color: var(--primary);
-    font-size: 2.5rem;
-    margin-bottom: 1rem;
-}
-
 .contact-subtitle {
     text-align: center;
     color: var(--text-dark);
