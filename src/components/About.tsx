@@ -40,22 +40,13 @@ const About = () => {
           </div>
           <div className="about-text">
             <p>
-              Skewered Co has been a staple in the Japanese street food scene for 10 years,
-              specializing in events at local farmers markets and private catering. Our unique
-              selling point is our dedication to bringing the authentic taste of Japan to Arizona,
-              one skewer at a time.
+              At Skewered Co, we bring the vibrant flavors of Japanese street food straight to Arizona. From bustling farmers markets to private events, our mission is simple: serve up bold, authentic skewers that make every moment unforgettable.
             </p>
             <p>
-              Skewered Co has built a reputation for excellence over the past decade, becoming
-              synonymous with quality and authenticity in Japanese street food. Our team's passion
-              for culinary craftsmanship shines through in every dish we serve, creating memorable
-              experiences for our customers.
+              Inspired by Japan's lively food stalls, our team blends traditional recipes with fresh, local ingredients to create dishes that are both nostalgic and exciting. Every skewer is grilled to perfection, crafted with care, and served with a smile.
             </p>
             <p>
-              We take pride in sourcing the finest ingredients and staying true to traditional recipes,
-              ensuring that each bite transports you to the bustling streets of Japan. With a commitment
-              to flavor and a flair for innovation, Skewered Co continues to delight taste buds and
-              captivate food enthusiasts across Arizona.
+              Whether you're discovering us at a market or inviting us to your special event, Skewered Co is here to turn everyday moments into delicious memories.
             </p>
           </div>
         </div>
