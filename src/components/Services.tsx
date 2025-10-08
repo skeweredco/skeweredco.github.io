@@ -47,24 +47,24 @@ const Services = () => {
   return (
     <section id="services" className="services-section">
       <div className="container">
-        <h2 className="section-title">Our Services</h2>
+        <h2 className="section-title">What We Do</h2>
         <div className="services-grid">
           <ServiceCard
-            title="Private Catering"
-            description="Elevate your private events with authentic Japanese street food. We offer customized menus tailored to your preferences and dietary requirements, bringing the vibrant flavors of Japan to your special occasion."
-            icon="🍱"
-            delay={0}
-          />
-          <ServiceCard
-            title="Farmers Market Events"
-            description="Find us at local farmers markets throughout Arizona. We bring fresh, made-to-order Japanese street food to community events, offering a taste of authentic cuisine in a casual, vibrant atmosphere."
-            icon="🏪"
+            title="Farmers Markets"
+            description="Fresh vibes. Local flavor. 🍢 Catch us at your favorite farmers markets serving up sizzling skewers and street food made right on the spot. Come hungry, leave happy 😋🔥"
+            icon="🍢"
             delay={200}
           />
           <ServiceCard
-            title="On-Site Grilling"
-            description="Experience the excitement of live Japanese grilling at your event. Our skilled chefs prepare delicious skewers and other specialties right before your eyes, creating an interactive and memorable dining experience."
-            icon="🔥"
+            title="Night Markets"
+            description="The grill lights up when the sun goes down 🏮✨ Swing by our night market booth for bold flavors, good music, and late-night bites that hit different 😎🍢"
+            icon="🏮"
+            delay={0}
+          />
+          <ServiceCard
+            title="Interactive Experience"
+            description="Let's turn your event into a food show 👨‍🍳🔥 Watch our chefs work the grill and serve up fresh skewers right in front of you. Good food, good vibes, unforgettable moments 😍"
+            icon="👨‍🍳"
             delay={400}
           />
         </div>
