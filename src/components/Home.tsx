@@ -39,7 +39,7 @@ const Home = () => {
       <div className="home-content">
         <h1 ref={titleRef} className="title">Skewered Co</h1>
         <p ref={subtitleRef} className="subtitle">Savor the authentic flavors of Japan, grilled to perfection</p>
-        <button ref={buttonRef} className="cta-button" onClick={scrollToMenu}>
+        <button className="cta-button" onClick={scrollToMenu}>
           View Menu
         </button>
       </div>

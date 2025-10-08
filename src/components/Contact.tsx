@@ -1,183 +1,182 @@
-import { useState, useRef, useEffect } from 'react';
-import '../styles/components.css';
+import { useState } from 'react';
+import type { FormEvent } from 'react';
+import '../styles/Contact.css';
+
+const VITE_WEB3FORMS_ACCESS_KEY = import.meta.env.VITE_WEB3FORMS_ACCESS_KEY;
+
+interface FormData {
+  name: string;
+  email: string;
+  message: string;
+}
 
 const Contact = () => {
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState<FormData>({
     name: '',
     email: '',
-    message: ''
+    message: '',
   });
-  const [currentMonth, setCurrentMonth] = useState(new Date());
-  const formRef = useRef<HTMLDivElement>(null);
-  const calendarRef = useRef<HTMLDivElement>(null);
 
-  // Sample events for the calendar
-  const events = [
-    { date: new Date(currentMonth.getFullYear(), currentMonth.getMonth(), 10), title: 'Downtown Farmers Market' },
-    { date: new Date(currentMonth.getFullYear(), currentMonth.getMonth(), 15), title: 'Private Event' },
-    { date: new Date(currentMonth.getFullYear(), currentMonth.getMonth(), 22), title: 'Food Festival' },
-  ];
+  const [errors, setErrors] = useState<Partial<FormData>>({});
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitSuccess, setSubmitSuccess] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
 
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('animate-in');
-          }
-        });
-      },
-      { threshold: 0.2 }
-    );
+  const validate = (): boolean => {
+    const newErrors: Partial<FormData> = {};
 
-    if (formRef.current) observer.observe(formRef.current);
-    if (calendarRef.current) observer.observe(calendarRef.current);
+    if (!formData.name.trim()) {
+      newErrors.name = 'Name is required';
+    }
 
-    return () => {
-      if (formRef.current) observer.unobserve(formRef.current);
-      if (calendarRef.current) observer.unobserve(calendarRef.current);
-    };
-  }, []);
+    if (!formData.email.trim()) {
+      newErrors.email = 'Email is required';
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
+      newErrors.email = 'Email is invalid';
+    }
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    if (!formData.message.trim()) {
+      newErrors.message = 'Message is required';
+    }
+
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
+
+  const handleInputChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
     const { name, value } = e.target;
-    setFormData(prev => ({ ...prev, [name]: value }));
+    setFormData(prev => ({
+      ...prev,
+      [name]: value,
+    }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
-    // In a real application, you would send this data to a server
-    console.log('Form submitted:', formData);
-    alert('Thank you for your message! We will get back to you soon.');
-    setFormData({ name: '', email: '', message: '' });
-  };
 
-  const prevMonth = () => {
-    setCurrentMonth(new Date(currentMonth.getFullYear(), currentMonth.getMonth() - 1, 1));
-  };
+    if (validate()) {
+      setIsSubmitting(true);
+      setSubmitError(null);
 
-  const nextMonth = () => {
-    setCurrentMonth(new Date(currentMonth.getFullYear(), currentMonth.getMonth() + 1, 1));
-  };
+      fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          access_key: VITE_WEB3FORMS_ACCESS_KEY,
+          ...formData,
+          subject: `[Skewered Co Website: ContactForm] Submission from ${formData.name}`,
+        }),
+      })
+        .then(res => res.json())
+        .then(data => {
+          setIsSubmitting(false);
+          if (data.success) {
+            setSubmitSuccess(true);
+            setFormData({ name: '', email: '', message: '' });
 
-  // Generate calendar days
-  const generateCalendarDays = () => {
-    const year = currentMonth.getFullYear();
-    const month = currentMonth.getMonth();
-
-    // Get the first day of the month
-    const firstDay = new Date(year, month, 1).getDay();
-
-    // Get the number of days in the month
-    const daysInMonth = new Date(year, month + 1, 0).getDate();
-
-    const days = [];
-
-    // Add empty cells for days before the first day of the month
-    for (let i = 0; i < firstDay; i++) {
-      days.push(<div key={`empty-${i}`} className="calendar-day empty"></div>);
+            // Reset success message after 5 seconds
+            setTimeout(() => {
+              setSubmitSuccess(false);
+            }, 5000);
+          } else {
+            setSubmitError(
+              data.message || 'An error occurred. Please try again.'
+            );
+          }
+        })
+        .catch(() => {
+          setIsSubmitting(false);
+          setSubmitError('An error occurred. Please try again.');
+        });
     }
-
-    // Add days of the month
-    for (let day = 1; day <= daysInMonth; day++) {
-      const date = new Date(year, month, day);
-      const event = events.find(e =>
-        e.date.getDate() === date.getDate() &&
-        e.date.getMonth() === date.getMonth() &&
-        e.date.getFullYear() === date.getFullYear()
-      );
-
-      days.push(
-        <div key={day} className={`calendar-day ${event ? 'has-event' : ''}`}>
-          <span className="day-number">{day}</span>
-          {event && <div className="event-indicator" title={event.title}></div>}
-        </div>
-      );
-    }
-
-    return days;
   };
+
 
   return (
     <section id="contact" className="contact-section">
-      <div className="container">
-        <h2 className="section-title">Contact Us</h2>
+      <div className="contact-container">
+        <h2 className="contact-title">Contact Us</h2>
+        {/* <p className="contact-subtitle">Get in touch with us for your catering needs</p> */}
 
         <div className="contact-content">
-          <div ref={calendarRef} className="calendar-container">
+          {/* Google Calendar Embed */}
+          <div className="calendar-container animate-in">
             <h3>Upcoming Events</h3>
-            <div className="calendar">
-              <div className="calendar-header">
-                <button onClick={prevMonth}>&lt;</button>
-                <h4>
-                  {currentMonth.toLocaleString('default', { month: 'long' })} {currentMonth.getFullYear()}
-                </h4>
-                <button onClick={nextMonth}>&gt;</button>
-              </div>
-
-              <div className="weekdays">
-                <div>Sun</div>
-                <div>Mon</div>
-                <div>Tue</div>
-                <div>Wed</div>
-                <div>Thu</div>
-                <div>Fri</div>
-                <div>Sat</div>
-              </div>
-
-              <div className="calendar-days">
-                {generateCalendarDays()}
-              </div>
-
-              <div className="events-legend">
-                <div className="event-item">
-                  <span className="event-dot"></span>
-                  <span>Event Scheduled</span>
-                </div>
-              </div>
+            <div className="google-calendar-wrapper">
+              <iframe
+                src="https://calendar.google.com/calendar/embed?height=600&wkst=1&ctz=America%2FPhoenix&showPrint=0&showTz=0&showCalendars=0&showTabs=0&showTitle=0&src=ZTUwZmVkYWQ5NzExNTA0YzdmNmFiYWI4NWVkMDlmYzZkY2YzNGM1MWEzOWFmYTRkOTlkN2VhOTlmYzY2ODQ5OUBncm91cC5jYWxlbmRhci5nb29nbGUuY29t&color=%23a79b8e"
+              />
             </div>
           </div>
 
-          <div ref={formRef} className="contact-form-container">
+          <div className="contact-form-container visible">
             <h3>Get in Touch</h3>
-            <form onSubmit={handleSubmit} className="contact-form">
-              <div className="form-group">
-                <label htmlFor="name">Name</label>
-                <input
-                  type="text"
-                  id="name"
-                  name="name"
-                  value={formData.name}
-                  onChange={handleInputChange}
-                  required
-                />
-              </div>
 
-              <div className="form-group">
-                <label htmlFor="email">Email</label>
-                <input
-                  type="email"
-                  id="email"
-                  name="email"
-                  value={formData.email}
-                  onChange={handleInputChange}
-                  required
-                />
+            {submitSuccess ? (
+              <div className="success-message">
+                <p>Thank you for your message! We will get back to you soon.</p>
               </div>
+            ) : (
+              <> {submitError && <div className="error-message">{submitError}</div>}
+                <form onSubmit={handleSubmit} className="contact-form">
+                  <div className="form-group">
+                    <label htmlFor="name">Name</label>
+                    <input
+                      type="text"
+                      id="name"
+                      name="name"
+                      value={formData.name}
+                      onChange={handleInputChange}
+                      required
+                    />
+                    {errors.name && (
+                      <span className="error-message">{errors.name}</span>
+                    )}
+                  </div>
 
-              <div className="form-group">
-                <label htmlFor="message">Message</label>
-                <textarea
-                  id="message"
-                  name="message"
-                  value={formData.message}
-                  onChange={handleInputChange}
-                  required
-                ></textarea>
-              </div>
+                  <div className="form-group">
+                    <label htmlFor="email">Email</label>
+                    <input
+                      type="email"
+                      id="email"
+                      name="email"
+                      value={formData.email}
+                      onChange={handleInputChange}
+                      required
+                    />
+                    {errors.email && (
+                      <span className="error-message">{errors.email}</span>
+                    )}
+                  </div>
 
-              <button type="submit" className="submit-button">Send Message</button>
-            </form>
+                  <div className="form-group">
+                    <label htmlFor="message">Message</label>
+                    <textarea
+                      id="message"
+                      name="message"
+                      value={formData.message}
+                      onChange={handleInputChange}
+                      required
+                    />
+                    {errors.message && (
+                      <span className="error-message">{errors.message}</span>
+                    )}
+                  </div>
+                  <input type="text" name="_honey" style={{ display: 'none' }} />
+                  <button
+                    type="submit"
+                    className="submit-btn"
+                    disabled={isSubmitting}
+                  >
+                    {isSubmitting ? 'Sending...' : 'Send Message'}
+                  </button>
+                </form>
+              </>
+            )}
           </div>
         </div>
       </div>
