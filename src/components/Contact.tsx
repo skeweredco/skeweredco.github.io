@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import type { FormEvent } from 'react';
 import '../styles/Contact.css';
-
-const VITE_WEB3FORMS_ACCESS_KEY = import.meta.env.VITE_WEB3FORMS_ACCESS_KEY;
+import { GOOGLE_CALENDAR_URL } from '../utils/constants';
+import { VITE_WEB3FORMS_ACCESS_KEY } from '../config';
 
 interface FormData {
   name: string;
@@ -95,21 +95,16 @@ const Contact = () => {
     }
   };
 
-
   return (
     <section id="contact" className="contact-section">
       <div className="container">
         <h2 className="section-title">Contact Us</h2>
-        {/* <p className="contact-subtitle">Get in touch with us for your catering needs</p> */}
 
         <div className="contact-content">
-          {/* Google Calendar Embed */}
           <div className="calendar-container animate-in">
             <h3>Upcoming Events</h3>
             <div className="google-calendar-wrapper">
-              <iframe
-                src="https://calendar.google.com/calendar/embed?height=600&wkst=1&ctz=America%2FPhoenix&showPrint=0&showTz=0&showCalendars=0&showTabs=0&showTitle=0&src=ZTUwZmVkYWQ5NzExNTA0YzdmNmFiYWI4NWVkMDlmYzZkY2YzNGM1MWEzOWFmYTRkOTlkN2VhOTlmYzY2ODQ5OUBncm91cC5jYWxlbmRhci5nb29nbGUuY29t&color=%23a79b8e"
-              />
+              <iframe src={GOOGLE_CALENDAR_URL} />
             </div>
           </div>
 
@@ -121,7 +116,11 @@ const Contact = () => {
                 <p>Thank you for your message! We will get back to you soon.</p>
               </div>
             ) : (
-              <> {submitError && <div className="error-message">{submitError}</div>}
+              <>
+                {' '}
+                {submitError && (
+                  <div className="error-message">{submitError}</div>
+                )}
                 <form onSubmit={handleSubmit} className="contact-form">
                   <div className="form-group">
                     <label htmlFor="name">Name</label>
@@ -166,7 +165,11 @@ const Contact = () => {
                       <span className="error-message">{errors.message}</span>
                     )}
                   </div>
-                  <input type="text" name="_honey" style={{ display: 'none' }} />
+                  <input
+                    type="text"
+                    name="_honey"
+                    style={{ display: 'none' }}
+                  />
                   <button
                     type="submit"
                     className="submit-btn"
