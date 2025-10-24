@@ -1,63 +1,64 @@
 .about-section {
-    background-color: var(--light-color);
-    padding: 100px 0;
+  background-color: var(--secondary-bg-color);
+  padding: 100px 0;
 }
 
 .about-content {
-    display: flex;
-    flex-direction: column;
-    gap: 50px;
-    max-width: 800px;
-    margin: 0 auto;
-    opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 0.5s ease, transform 0.5s ease;
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  transform: translateY(20px);
+  transition:
+    opacity 0.5s ease,
+    transform 0.5s ease;
 }
 
 .about-content.visible {
-    opacity: 1;
-    transform: translateY(0);
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .about-content h2 {
-    font-size: 2.5rem;
-    color: var(--primary-color);
-    margin-bottom: 1rem;
-    text-align: center;
+  font-size: 2.5rem;
+  color: var(--primary-color);
+  margin-bottom: 1rem;
+  text-align: center;
 }
 
 .about-content p {
-    font-size: 1.1rem;
-    line-height: 1.6;
-    color: var(--text-dark);
-    margin-bottom: 20px;
-    flex: 1;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: var(--text-dark);
+  margin-bottom: 20px;
+  flex: 1;
 }
 
 .chef-image {
-    flex: 1;
+  flex: 1;
 }
 
 .chef-highlight {
-    font-weight: bold;
-    color: var(--primary-color);
+  font-weight: bold;
+  color: var(--primary-color);
 }
 
 .image-container {
-    width: 100%;
-    height: 400px;
-    background-color: var(--background-color);
-    border-radius: 10px;
-    overflow: hidden;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  width: 100%;
+  height: 400px;
+  background-color: var(--background-color);
+  border-radius: 10px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .chef-placeholder {
-    background-color: var(--secondary-color);
-    color: white;
-    padding: 20px;
-    border-radius: 5px;
-    font-weight: bold;
+  background-color: var(--secondary-color);
+  color: white;
+  padding: 20px;
+  border-radius: 5px;
+  font-weight: bold;
 }

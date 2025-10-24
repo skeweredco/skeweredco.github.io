@@ -32,7 +32,6 @@ const About = () => {
         <div ref={sectionRef} className="about-content">
           <div className="chef-image">
             <div className="image-container">
-              {/* Chef image would go here */}
               <div className="chef-placeholder">
                 <span>Chef Henry Tran</span>
               </div>
@@ -40,13 +39,21 @@ const About = () => {
           </div>
           <div className="about-text">
             <p>
-              At Skewered Co, we bring the vibrant flavors of Japanese street food straight to Arizona. From bustling farmers markets to private events, our mission is simple: serve up bold, authentic skewers that make every moment unforgettable.
+              At Skewered Co, we bring the vibrant flavors of Japanese street
+              food straight to Arizona. From bustling farmers markets to private
+              events, our mission is simple: serve up bold, authentic skewers
+              that make every moment unforgettable.
             </p>
             <p>
-              Inspired by Japan's lively food stalls, our team blends traditional recipes with fresh, local ingredients to create dishes that are both nostalgic and exciting. Every skewer is grilled to perfection, crafted with care, and served with a smile.
+              Inspired by Japan's lively food stalls, our team blends
+              traditional recipes with fresh, local ingredients to create dishes
+              that are both nostalgic and exciting. Every skewer is grilled to
+              perfection, crafted with care, and served with a smile.
             </p>
             <p>
-              Whether you're discovering us at a market or inviting us to your special event, Skewered Co is here to turn everyday moments into delicious memories.
+              Whether you're discovering us at a market or inviting us to your
+              special event, Skewered Co is here to turn everyday moments into
+              delicious memories.
             </p>
           </div>
         </div>

@@ -47,7 +47,7 @@ const Services = () => {
   return (
     <section id="services" className="services-section">
       <div className="container">
-        <h2 className="section-title">What We Do</h2>
+        <h2 className="section-title-light">What We Do</h2>
         <div className="services-grid">
           <ServiceCard
             title="Farmers Markets"
