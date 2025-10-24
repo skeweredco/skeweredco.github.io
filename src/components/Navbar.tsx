@@ -11,7 +11,6 @@ const Navbar = () => {
     const handleScroll = () => {
       const sections = ['home', 'about', 'services', 'contact'];
 
-      // Check which section is currently in view
       for (const section of sections) {
         const element = document.getElementById(section);
         if (element) {
@@ -23,7 +22,6 @@ const Navbar = () => {
         }
       }
 
-      // Add background to navbar when scrolled
       setScrolled(window.scrollY > 50);
     };
 
@@ -47,24 +45,28 @@ const Navbar = () => {
     <nav className={`navbar ${scrolled ? 'scrolled' : ''}`}>
       <div className="navbar-container">
         <div className="logo">
-          <img src={logoImage} alt="Skewered Co Logo" className="logo-image" />
+          <button onClick={() => scrollToSection('home')}>
+            <img src={logoImage} alt="Skewered Co" className="logo-image" />
+          </button>
         </div>
 
-        <div className={`hamburger ${menuOpen ? 'active' : ''}`} onClick={toggleMenu}>
+        <div
+          className={`hamburger ${menuOpen ? 'active' : ''}`}
+          onClick={toggleMenu}
+        >
           <span></span>
           <span></span>
           <span></span>
         </div>
 
         <ul className={`nav-menu ${menuOpen ? 'active' : ''}`}>
-          <li className={activeSection === 'home' ? 'active' : ''}>
-            <button onClick={() => scrollToSection('home')}>Home</button>
-          </li>
           <li className={activeSection === 'about' ? 'active' : ''}>
             <button onClick={() => scrollToSection('about')}>About</button>
           </li>
           <li className={activeSection === 'services' ? 'active' : ''}>
-            <button onClick={() => scrollToSection('services')}>Services</button>
+            <button onClick={() => scrollToSection('services')}>
+              Services
+            </button>
           </li>
           <li className={activeSection === 'contact' ? 'active' : ''}>
             <button onClick={() => scrollToSection('contact')}>Contact</button>
