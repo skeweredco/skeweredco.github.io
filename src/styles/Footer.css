@@ -1,7 +1,6 @@
-/* Footer Section */
 .footer {
   background-color: var(--background-color);
-  color: white;
+  color: var(--secondary-color);
   padding: 2rem 0;
 }
 
@@ -13,7 +12,6 @@
 
 .footer-logo {
   font-size: 0.9rem;
-  color: white;
 }
 
 .footer-logo h3 {

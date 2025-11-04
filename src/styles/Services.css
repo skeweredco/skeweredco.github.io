@@ -43,7 +43,7 @@
 }
 
 .service-card p {
-  color: var(--text-color);
+  color: var(--primary-text-color);
   line-height: 1.5;
 }
 

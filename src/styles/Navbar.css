@@ -6,12 +6,12 @@
   z-index: 1000;
   transition: var(--transition);
   padding: 20px 0;
-  background-color: var(--background-color);
+  background-color: rgba(6, 8, 5, 0.8);
 }
 
 .navbar.scrolled {
-  background-color: var(--background-color);
-  padding: 10px 0;
+  backdrop-filter: blur(2px);
+  padding: 0;
 }
 
 .navbar-container {
@@ -50,14 +50,14 @@
   border: none;
   font-size: 1rem;
   font-weight: 500;
-  color: var(--secondary-color);
+  color: var(--secondary-text-color);
   transition: var(--transition);
   position: relative;
   padding: 5px 0;
 }
 
 .nav-menu li.active button {
-  color: var(--secondary-color);
+  color: var(--secondary-text-color);
 }
 
 .nav-menu li button::after {
