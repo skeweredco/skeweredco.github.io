@@ -44,7 +44,6 @@ body {
 }
 
 @media (max-width: 768px) {
-
   .about-content,
   .contact-content {
     flex-direction: column;

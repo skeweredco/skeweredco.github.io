@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import '../styles/Navbar.css';
-import logoImage from '../assets/images/skeweredco_logo.png';
+import logoImage from '../assets/images/skeweredco_logo_transparent.png';
 
 const Navbar = () => {
   const [activeSection, setActiveSection] = useState('home');

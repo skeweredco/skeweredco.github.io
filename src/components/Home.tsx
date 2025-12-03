@@ -1,5 +1,5 @@
 import { useEffect, useRef } from 'react';
-import logoImage from '../assets/images/skeweredco_logo.png';
+import logoImage from '../assets/images/skeweredco_logo_transparent.png';
 import '../styles/Home.css';
 
 const Home = () => {
