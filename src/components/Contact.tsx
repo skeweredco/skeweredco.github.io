@@ -99,18 +99,9 @@ const Contact = () => {
     <section id="contact" className="contact-section">
       <div className="container">
         <h2 className="section-title">Contact Us</h2>
-
         <div className="contact-content">
-          <div className="calendar-container animate-in">
-            <h3>Upcoming Events</h3>
-            <div className="google-calendar-wrapper">
-              <iframe src={GOOGLE_CALENDAR_URL} />
-            </div>
-          </div>
-
           <div className="contact-form-container visible">
             <h3>Get in Touch</h3>
-
             {submitSuccess ? (
               <div className="success-message">
                 <p>Thank you for your message! We will get back to you soon.</p>

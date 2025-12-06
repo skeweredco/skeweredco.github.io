@@ -1,0 +1,16 @@
+.events-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+}
+
+.events-section {
+    padding: 100px 0;
+    background-color: var(--light-color);
+}
+
+.events-section h3 {
+    font-size: 1.5rem;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}

@@ -4,6 +4,7 @@ import About from './components/About';
 import Services from './components/Services';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
+import Events from './components/Events';
 import './App.css';
 
 function App() {
@@ -14,6 +15,7 @@ function App() {
         <Home />
         <About />
         <Services />
+        <Events />
         <Contact />
       </main>
       <Footer />
