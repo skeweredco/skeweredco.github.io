@@ -9,7 +9,7 @@ const Navbar = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      const sections = ['home', 'about', 'services', 'contact'];
+      const sections = ['home', 'about', 'services', 'events', 'contact'];
 
       for (const section of sections) {
         const element = document.getElementById(section);
@@ -66,6 +66,11 @@ const Navbar = () => {
           <li className={activeSection === 'services' ? 'active' : ''}>
             <button onClick={() => scrollToSection('services')}>
               Services
+            </button>
+          </li>
+          <li className={activeSection === 'events' ? 'active' : ''}>
+            <button onClick={() => scrollToSection('events')}>
+              Events
             </button>
           </li>
           <li className={activeSection === 'contact' ? 'active' : ''}>
